@@ -13,6 +13,59 @@
            Upon submitting the form, you should simply print the Value of the Form to the Console.
            Optionally, display it in your template.
       -->
+
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="form-group">
+          <label for="email">Email Address <span class="required" title="Required">*</span>:</label>
+          <input 
+            type="email" 
+            id="email" 
+            class="form-control"
+            ngModel
+            name="email"
+            required
+            email
+            #email="ngModel">
+            <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email address</span>
+        </div>
+        <div class="form-group">
+          <label for="subscriptionType">Subscription Type</label>
+          <select 
+            name="subscriptionType" 
+            id="subscriptionType"
+            class="form-control"
+            [ngModel]="defaultSubscription">
+            <option value="basic">Basic</option>
+            <option value="advanced">Advanced</option>
+            <option value="pro">Pro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="password">Password <span class="required" title="Required">*</span>:</label>
+          <input 
+            type="password" 
+            class="form-control"
+            id="password"
+            ngModel
+            name="password"
+            required
+            #password="ngModel">
+            <span class="help-block" *ngIf="!password.valid && password.touched">Please enter a password</span>
+        </div>
+        <button 
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!f.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+  <div class="row" *ngIf="submitted">
+    <div class="col-xs-12">
+      <hr>
+      <h3>Your Data</h3>
+      <p>Email Address: {{ user.email }}</p>
+      <p>Subscription Type: {{ user.subscriptionType }}</p>
+      <p>Password: {{ user.password }}</p>
     </div>
   </div>
 </div>
