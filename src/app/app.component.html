@@ -14,7 +14,7 @@
            Optionally, display it in your template.
       -->
 
-      <form (ngSubmit)="onSubmit()" #f="ngForm">
+      <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
         <div class="form-group">
           <label for="email">Email Address <span class="required" title="Required">*</span>:</label>
           <input 
@@ -56,7 +56,7 @@
         <button 
           class="btn btn-primary"
           type="submit"
-          [disabled]="!f.valid">Submit</button>
+          [disabled]="!signupForm.valid">Submit</button>
       </form>
     </div>
   </div>
